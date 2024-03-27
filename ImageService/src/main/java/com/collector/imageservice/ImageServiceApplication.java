@@ -1,13 +1,13 @@
-package com.collector.collectorspot;
+package com.collector.imageservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CollectorspotApplication {
+public class ImageServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CollectorspotApplication.class, args);
+        SpringApplication.run(ImageServiceApplication.class, args);
     }
 
 }

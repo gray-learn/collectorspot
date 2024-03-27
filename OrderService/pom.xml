@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.collector</groupId>
-    <artifactId>collectorspot</artifactId>
+    <artifactId>OrderService</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>collectorspot</name>
-    <description>collectorspot</description>
+    <name>OrderService</name>
+    <description>OrderService</description>
     <properties>
         <java.version>17</java.version>
     </properties>

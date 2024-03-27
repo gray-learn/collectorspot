@@ -1,10 +1,10 @@
-package com.collector.collectorspot;
+package com.collector.productservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CollectorspotApplicationTests {
+class ProductServiceApplicationTests {
 
     @Test
     void contextLoads() {
