@@ -1,10 +1,10 @@
-package com.collector.collectorspot;
+package com.collector.orderservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CollectorspotApplicationTests {
+class OrderServiceApplicationTests {
 
     @Test
     void contextLoads() {
