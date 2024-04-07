@@ -1,18 +1,19 @@
 package com.collector.imageservice.config;
 
+import jakarta.annotation.Resource;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-
 @Configuration
 @EnableRabbit
-public class MessagingConfig {
+public class MessagingConfig implements InitializingBean {
 
     public static final String QUEUE = "collector_queue";
     public static final String EXCHANGE = "collector_exchange";
@@ -33,16 +34,19 @@ public class MessagingConfig {
         return BindingBuilder.bind(queue).to(exchange).with(ROUTING_KEY);
     }
 
-    @Bean
-    public MessageConverter converter() {
-        return new Jackson2JsonMessageConverter();
-    }
+    // JSON Convert
+    @Resource
+    private RabbitTemplate rabbitTemplate;
 
-    @Bean
-    public AmqpTemplate template(ConnectionFactory connectionFactory) {
-        final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-        rabbitTemplate.setMessageConverter(converter());
-        return rabbitTemplate;
+    @Override
+    public void afterPropertiesSet() {
+        // Serialize the JSON
+        rabbitTemplate.setMessageConverter(new Jackson2JsonMessageConverter());
     }
+    // JSON Convert
 
+//    @Bean Cycle Refer
+//    public MessageConverter converter() {
+//        return new Jackson2JsonMessageConverter();
+//    }
 }

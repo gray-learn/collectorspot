@@ -32,9 +32,12 @@ public class OrderPublisher {
     @GetMapping("/download/{fileName}")
     public String downloadFile(@PathVariable String fileName) {
         byte[] fileData = service.downloadFile(fileName);
-        // TODO
-        String fileType  =  ""; // get file type from file
-        Message message = MessageBuilder.withBody(fileData).setHeader("ContentType", fileType).build();
+        String fileType  = "application/octet-stream"; // get file type from file
+        Message message = MessageBuilder.withBody(fileData)
+                .setContentLength(fileData.length)
+                .setHeader("ContentType", fileType)
+                .setHeader("Content-disposition", "attachment; filename=\"" + fileName + "\"")
+                .build();
         template.send(MessagingConfig.EXCHANGE, MessagingConfig.ROUTING_KEY, message);
         return "Success !!";
     }
