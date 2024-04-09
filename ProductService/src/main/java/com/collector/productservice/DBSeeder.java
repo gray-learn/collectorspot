@@ -14,16 +14,17 @@ public class DBSeeder {
     @Bean
     CommandLineRunner initDatabase(GameCollectorRepository repository) {
         return args -> {
-            GameCollectorItem item1 = new GameCollectorItem(1L, "Game 1", "SKU1", "Available");
-            GameCollectorItem item2 = new GameCollectorItem(2L, "Game 2", "SKU2", "Out of Stock");
-            GameCollectorItem item3 = new GameCollectorItem(3L, "Game 3", "SKU3", "Available");
-            GameCollectorItem item4 = new GameCollectorItem(4L, "Game 4", "SKU4", "Out of Stock");
-            GameCollectorItem item5 = new GameCollectorItem(5L, "Game 5", "SKU5", "Available");
-            GameCollectorItem item6 = new GameCollectorItem(6L, "Game 6", "SKU6", "Out of Stock");
-            GameCollectorItem item7 = new GameCollectorItem(7L, "Game 7", "SKU7", "Available");
-            GameCollectorItem item8 = new GameCollectorItem(8L, "Game 8", "SKU8", "Out of Stock");
-            GameCollectorItem item9 = new GameCollectorItem(9L, "Game 9", "SKU9", "Available");
-            GameCollectorItem item10 = new GameCollectorItem(10L, "Game 10", "SKU10", "Out of Stock");
+            GameCollectorItem item1 = new GameCollectorItem(1L, "The Legend of Zelda", "ZELDA123", "Available", 5, 145.99);
+            GameCollectorItem item2 = new GameCollectorItem(2L, "Super Mario Bros.", "MARIO456", "Available", 3, 214.99);
+            GameCollectorItem item3 = new GameCollectorItem(3L, "Final Fantasy VII", "FFVII789", "Available", 4, 150.99);
+            GameCollectorItem item4 = new GameCollectorItem(4L, "Metal Gear Solid", "MGS101", "Available", 5, 200.99);
+            GameCollectorItem item5 = new GameCollectorItem(5L, "Chrono Trigger", "CHRONO202", "Available", 2, 189.99);
+            GameCollectorItem item6 = new GameCollectorItem(6L, "Resident Evil 2", "RE2303", "Available", 3, 240.99);
+            GameCollectorItem item7 = new GameCollectorItem(7L, "Castlevania: Symphony of the Night", "CVSOTN404", "Available", 6, 345.99);
+            GameCollectorItem item8 = new GameCollectorItem(8L, "Street Fighter II", "SFII505", "Available", 6, 188.99);
+            GameCollectorItem item9 = new GameCollectorItem(9L, "Mega Man X", "MEGAMAN606", "Available", 2, 208.99);
+            GameCollectorItem item10 = new GameCollectorItem(10L, "EarthBound", "EARTH707", "Available", 4, 158.99);
+
 
             repository.save(item1);
             repository.save(item2);
