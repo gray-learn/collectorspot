@@ -1,4 +1,4 @@
-package com.collector.productservice;
+package com.collector.orderservice;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,13 +14,10 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class GameCollectorItem {
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String title;
-    private String sku;
-    private String status;
-    private Integer qty;
-    private Double price;
+    private Long itemId; //for the ID of the GameCollectorItem
+    private String status; //for the status of the order
 }
