@@ -11,12 +11,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@Builder
-@Entity
-@Table(name = "gamecollector")
-@NoArgsConstructor
-@AllArgsConstructor
+//@Data
+//@Builder
+//@Entity
+//@Table(name = "gamecollector")
+//@NoArgsConstructor
+//@AllArgsConstructor
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
