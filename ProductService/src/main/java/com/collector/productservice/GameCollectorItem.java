@@ -17,10 +17,28 @@ import lombok.NoArgsConstructor;
 public class GameCollectorItem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String title;
-    private String sku;
-    private String status;
-    private Integer qty;
-    private Double price;
+    private Long id; // Represents the unique identifier for the record (INT PRIMARY KEY)
+    private String name; // Represents the title of the game collector item (VARCHAR(255) NOT NULL)
+    private String description; // Represents the SKU or description of the item (TEXT)
+    private Double price; // Represents the price of the item (DECIMAL(10,2) NOT NULL)
+    private Integer stock; // Represents the available quantity in stock (INT NOT NULL)
+    private String imageId; // Represents the identifier for the associated image (VARCHAR(50) NOT NULL)
+
+
+//    @Entity
+//    @Table(name = "tutorials")
+//    public class Tutorial {
+//
+//        @Id
+//        @GeneratedValue(strategy = GenerationType.AUTO)
+//        private long id;
+//
+//        @Column(name = "title")
+//        private String title;
+//
+//        @Column(name = "description")
+//        private String description;
+//
+//        @Column(name = "published")
+//        private boolean published;
 }
