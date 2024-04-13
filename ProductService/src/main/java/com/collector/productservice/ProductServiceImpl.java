@@ -8,8 +8,9 @@ import org.springframework.stereotype.Service;
 public class ProductServiceImpl {//implements ProductService {
     private final GameCollectorRepository gameCollectorItemRepository;
 
-    public GameCollectorItem create(CreateProductDto productDto) {
-        GameCollectorItem newItem = productDto.toGameCollectorItem();
-        return gameCollectorItemRepository.save(newItem);
-    }
+    // TODO
+//    public GameCollectorItem create(CreateProductDto productDto) {
+//        GameCollectorItem newItem = productDto.toGameCollectorItem();
+//        return gameCollectorItemRepository.save(newItem);
+//    }
 }
