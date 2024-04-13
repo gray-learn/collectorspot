@@ -24,21 +24,8 @@ public class GameCollectorItem {
     private Integer stock; // Represents the available quantity in stock (INT NOT NULL)
     private String imageId; // Represents the identifier for the associated image (VARCHAR(50) NOT NULL)
 
-
-//    @Entity
-//    @Table(name = "tutorials")
-//    public class Tutorial {
-//
-//        @Id
-//        @GeneratedValue(strategy = GenerationType.AUTO)
-//        private long id;
-//
-//        @Column(name = "title")
-//        private String title;
-//
-//        @Column(name = "description")
-//        private String description;
-//
-//        @Column(name = "published")
-//        private boolean published;
+    public GameCollectorItem(String name, Double price) {
+        this.name = name;
+        this.price = price;
+    }
 }
