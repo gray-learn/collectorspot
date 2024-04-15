@@ -3,14 +3,33 @@ package com.collector.orderservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
-public class OrderServiceImpl {
-//    @Autowired
+public class OrderService {
     private final CartRepository cartRepository;
-//    @Autowired
+    @Autowired
     private final OrderRepository orderRepository;
 
-    public OrderServiceImpl(CartRepository cartRepository, OrderRepository orderRepository) {
+    public Order save(Order order) {
+        return orderRepository.save(order);
+    }
+
+    public Iterable<Order> findAll() {
+        return orderRepository.findAll();
+    }
+
+    public Optional<Order> findById(Long id) {
+        return orderRepository.findById(id);
+    }
+
+    public boolean existsById(Long id) {
+        return orderRepository.existsById(id);
+    }
+    public void deleteById(Long id) {
+        orderRepository.deleteById(id);
+    }
+    public OrderService(CartRepository cartRepository, OrderRepository orderRepository) {
         this.cartRepository = cartRepository;
         this.orderRepository = orderRepository;
     }
