@@ -10,7 +10,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Order {
-
     private String orderId;
     private String name;
     private int qty;
