@@ -1,4 +1,4 @@
-package com.collector.adminservice.dto;
+package com.collector.productservice;
 
 public record ProductDto(Integer id) {
 }
