@@ -1,16 +1,18 @@
 package com.collector.orderservice;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("game")
 public class OrderController {
+    Logger logger = LoggerFactory.getLogger(OrderController.class);
 
     @Autowired
-    private OrderServiceImpl orderService;
+    private com.collector.orderservice.OrderService orderService;
 
     @GetMapping("/aaa")
     public String home() {
@@ -18,7 +20,7 @@ public class OrderController {
     }
 
     @Autowired
-    private OrderServiceImpl OrderService;
+    private com.collector.orderservice.OrderService OrderService;
 
     //create operation
     @PostMapping("/add")
@@ -52,11 +54,6 @@ public class OrderController {
         }
     }
 
-//    @RequestMapping("/index")
-//    public String home() {
-//        return "index";
-//    }
-//
 //    @PostMapping("/add")
 //    public @ResponseBody String add(@RequestParam("empId") int empId, //
 //                                    @RequestParam("empName") String empName, //
