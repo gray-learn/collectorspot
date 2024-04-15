@@ -1,27 +1,59 @@
 package com.collector.orderservice;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
+@RequestMapping("game")
 public class OrderController {
+    Logger logger = LoggerFactory.getLogger(OrderController.class);
 
-//    @Autowired
-//    private OrderServiceImpl orderService;
+    @Autowired
+    private com.collector.orderservice.OrderService orderService;
 
     @GetMapping("/aaa")
     public String home() {
         return "index";
     }
 
+    @Autowired
+    private com.collector.orderservice.OrderService OrderService;
 
-//    @RequestMapping("/index")
-//    public String home() {
-//        return "index";
-//    }
-//
+    //create operation
+    @PostMapping("/add")
+    public @ResponseBody String add(@RequestBody Order order) {
+        orderService.save(order);
+        return "Order added";
+    }
+    //read operation
+    @GetMapping("/show")
+    public @ResponseBody Iterable<Order> show() {
+        return orderService.findAll();
+    }
+    //update operation
+    @PutMapping("/update/{id}")
+    public @ResponseBody String update(@PathVariable Long id, @RequestBody Order updatedOrder) {
+        if (orderService.existsById(id)) {
+            orderService.save(updatedOrder);
+            return "Order updated";
+        } else {
+            return "Order not found";
+        }
+    }
+    //delete operation
+    @DeleteMapping("/delete/{id}")
+    public @ResponseBody String delete(@PathVariable Long id) {
+        if (orderService.existsById(id)) {
+            orderService.deleteById(id);
+            return "Order deleted";
+        } else {
+            return "Order not found";
+        }
+    }
+
 //    @PostMapping("/add")
 //    public @ResponseBody String add(@RequestParam("empId") int empId, //
 //                                    @RequestParam("empName") String empName, //
