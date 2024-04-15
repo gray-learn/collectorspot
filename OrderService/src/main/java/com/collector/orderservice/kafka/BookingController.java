@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("book")
+//@RequestMapping("game")
 public class BookingController {
+    // TODO
 
     Logger logger = LoggerFactory.getLogger(BookingController.class);
     StreamBridge streamBridge;
@@ -20,10 +21,10 @@ public class BookingController {
     }
 
     @PostMapping
-    public String book(@RequestBody BookingDto bookingDto){
-        logger.info("Booking success!!!");
-        logger.info("Sending request to Email Server");
-        streamBridge.send("sendEmail-out-0", bookingDto);
-        return  "Success";
+    public String placeOrder(@RequestBody BookingDto orderDto){
+        logger.info("Order received: " + orderDto.productName());
+        logger.info("Sending request to Order Processing Service");
+        streamBridge.send("process Order-out-0", orderDto);
+        return  "Order placed successfully";
     }
 }
