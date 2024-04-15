@@ -1,4 +1,4 @@
 package com.collector.productservice;
 
-public record ProductDto(Integer id) {
+public record ProductDto(String type, Integer id) {
 }
