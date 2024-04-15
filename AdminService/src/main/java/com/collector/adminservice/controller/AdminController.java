@@ -1,5 +1,6 @@
 package com.collector.adminservice.controller;
 
+import com.collector.adminservice.dto.OrderDto;
 import com.collector.adminservice.dto.ProductDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +19,15 @@ public class AdminController {
     @DeleteMapping("/deleteProduct")
     public String deleteProduct(@RequestBody ProductDto pdto){
         logger.info("Sending request to Product Server");
-        streamBridge.send("admin-out-0", pdto);
+        streamBridge.send("admin-out-0", new ProductDto("deleteproduct", pdto.id()));
         logger.info("Delete product success!!!");
+        return  "Success";
+    }
+    @PostMapping("/updateOrder")
+    public String updateOrder(@RequestBody OrderDto odto){
+        logger.info("Sending request to Order Server");
+        streamBridge.send("admin-out-1", new OrderDto("updateorder", odto.id(),odto.total_price()));
+        logger.info("Update order success!!!");
         return  "Success";
     }
 }

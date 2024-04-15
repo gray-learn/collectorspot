@@ -18,7 +18,6 @@ public class OrderPublisher {
 
     @Autowired
     private StorageService service;
-
     @Autowired
     private RabbitTemplate template;
     @PostMapping("/{toyname}")
