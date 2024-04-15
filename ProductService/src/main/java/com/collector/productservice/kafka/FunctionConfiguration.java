@@ -19,12 +19,13 @@ public class FunctionConfiguration {
     @Bean
     Function<ProductDto, Boolean> product(){
         return (ProductDto dto)->{
-            logger.info("Delete the product by id  " + dto.id());
-            long pId = (long)dto.id();
-            productService.processProductImageId(pId);
-            productService.deleteProduct(pId);
+            if(dto.type().equals("deleteproduct")){
+                logger.info("Delete the product by id  " + dto.id());
+                long pId = (long)dto.id();
+                productService.processProductImageId(pId);
+                productService.deleteProduct(pId);
+            }
             return true;
         };
     }
-
 }
