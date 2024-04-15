@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+#  edgeservice:
+#    image: collector/edge-service:1.0.0
+#    container_name: edge-container
+#    ports:
+#      - "8080:8080"
+#    networks:
+#      - internal_network
+  orderservice:
+    image: collector/order-service:1.0.0
+    container_name: order-container
+    networks:
+      - internal_network
+  imageservice:
+    image: collector/image-service:1.0.0
+    container_name: image-container
+    networks:
+      - internal_network
+  adminservice:
+    image: collector/admin-service:1.0.0
+    container_name: admin-container
+    networks:
+      - internal_network
+  productservice:
+    image: collector/product-service:1.0.0
+    container_name: product-container
+    networks:
+      - internal_network
+  eurekaservice:
+    image: collector/service-discovery:1.0.0
+    container_name: eureka-container
+    ports:
+      - "8761:8761"
+    networks:
+      - internal_network
+networks:
+  internal_network:
+    external: false
+    name: collector-network
