@@ -7,7 +7,10 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectInputStream;
 import com.amazonaws.util.IOUtils;
+import com.collector.imageservice.kafka.Functions;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -20,6 +23,7 @@ import java.io.IOException;
 @Service
 @Slf4j
 public class StorageService {
+
 
     @Value("${application.bucket.name}")
     private String bucketName;
@@ -35,7 +39,6 @@ public class StorageService {
         return "File uploaded : " + fileName;
     }
 
-
     public byte[] downloadFile(String fileName) {
         S3Object s3Object = s3Client.getObject(bucketName, fileName);
         S3ObjectInputStream inputStream = s3Object.getObjectContent();
@@ -48,10 +51,15 @@ public class StorageService {
         return null;
     }
 
+    public boolean isFileExist(String fileName){
+        return null != s3Client.getObject(bucketName, fileName);
+    }
 
     public String deleteFile(String fileName) {
         s3Client.deleteObject(bucketName, fileName);
-        return fileName + " removed ...";
+        String message = fileName + " removed ...";
+        log.info(message);
+        return message;
     }
 
 

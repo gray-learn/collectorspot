@@ -17,10 +17,9 @@ public class AdminController {
 
     @DeleteMapping("/deleteProduct")
     public String deleteProduct(@RequestBody ProductDto pdto){
-        logger.info("Delete product success!!!");
         logger.info("Sending request to Product Server");
         streamBridge.send("admin-out-0", pdto);
+        logger.info("Delete product success!!!");
         return  "Success";
     }
-
 }
