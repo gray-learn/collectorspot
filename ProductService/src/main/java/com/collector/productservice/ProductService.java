@@ -6,11 +6,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.function.StreamBridge;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import javax.swing.text.html.Option;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,7 +28,6 @@ public class ProductService {
     public void deleteProduct(Long id){
         repo.deleteById(id);
     }
-
     public String processProductImageId(Long id){
         Optional<GameCollectorItem> image = repo.findById(id);
         if(image.isPresent()){
@@ -33,6 +36,10 @@ public class ProductService {
             streamBridge.send("product-out-0", new ImageDto(imageId));
         }
         return "success";
+    }
+
+    public List<GameCollectorItem> getAllProduct(){
+        return repo.findAll();
     }
 
     // TODO

@@ -17,6 +17,8 @@ public class ProductController {
 
     @Autowired
     private GameCollectorRepository repo;
+    @Autowired
+    private ProductService service;
 
     public ProductController(GameCollectorRepository repo) {
         this.repo = repo;
@@ -25,17 +27,15 @@ public class ProductController {
     @GetMapping("/products")
     public ResponseEntity<List<GameCollectorItem>> getAllGameCollectorItems() {
         try {
-            List<GameCollectorItem> products = new ArrayList<GameCollectorItem>();
+            List<GameCollectorItem> products = service.getAllProduct();
             // TODO
 //            if (title == null)
-                repo.findAll().forEach(products::add);
 //            else
 //                repo.findByTitleContainingIgnoreCase(title).forEach(products::add);
 //
 //            if (products.isEmpty()) {
 //                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 //            }
-
             return new ResponseEntity<>(products, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
